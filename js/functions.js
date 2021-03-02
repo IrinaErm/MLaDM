@@ -45,6 +45,64 @@ function check() {
 	return true;
 }
 
+function reflex() {
+	var n = document.getElementById("n").value;
+	var mas = document.getElementsByClassName("cell");
+
+	var k = 0;
+	var con = true;
+	for (var i = 0; i < n; i++){
+		for (var j = 0; j < n; j++){
+			if(i == j) {
+				if(mas[k].value != 1) {
+					con = false;
+				}				
+			}
+			k++;
+		}	
+	}
+	
+	if(con) {
+		document.getElementById('reflex').innerHTML = 'Рефлексивно';
+	}
+	else {
+		document.getElementById('reflex').innerHTML = 'Не является рефлексивным';
+	}
+}
+
+function symm() {
+	var n = document.getElementById("n").value;
+	var mas = document.getElementsByClassName("cell");
+
+	var k = 0;
+	var con = true;
+	var mas2 = [];
+	for (var i = 0; i < n; i++){
+		mas2[i] = [];
+		for (var j = 0; j < n; j++){
+			mas2[i][j] = mas[k].value;
+			k++;
+		}	
+	}
+	
+	for (var i = 0; i < n; i++){
+		for (var j = 0; j < n; j++){
+			if(!(mas2[i][j] == mas2[j][i])) {
+				con = false;
+			}
+		}	
+	}
+	
+	if(con) {
+		document.getElementById('symm').innerHTML = 'Симметрично';
+	}
+	else {
+		document.getElementById('symm').innerHTML = '';
+	}
+}
+
 function getRelations() {
 	check();
+	reflex();
+	symm();
 }
