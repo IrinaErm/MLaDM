@@ -8,7 +8,7 @@ function generateTable() {
     for (var i = 0; i < n; i++) {
 		html += '<tr>';
 		for(var j = 0; j < m; j++) {
-			html += '<td> <input type="number" class="cell" min="0" max="1"></td>';
+			html += '<td> <input type="number" class="cell" min="0" max="1" value="0"></td>';
 		}
 		html += '</tr>';       
     }
@@ -26,11 +26,11 @@ function calc() {
 	var m = mas2.length;
 
 	var k = 0;
-	var mas2 = [];						//перевод в двумерный массив
+	var mas = [];						//перевод в двумерный массив
 	for (var i = 0; i < n; i++){
-		mas2[i] = [];
+		mas[i] = [];
 		for (var j = 0; j < m; j++){
-			mas2[i][j] = ot[k].value;
+			mas[i][j] = ot[k].value;
 			k++;
 		}	
 	}
@@ -40,11 +40,23 @@ function calc() {
 	for (var i = 0; i < n; i++){
 		k = 0;
 		for (var j = 0; j < m; j++){
-			if(mas2[i][j] == 1) {
+			if(mas[i][j] == 1) {
 				k++;
 			}
 		}
 		if (k != 1) {
+			con = false;
+			break;
+		}
+	}
+	for (var i = 0; i < m; i++){
+		k = 0;
+		for (var j = 0; j < n; j++){
+			if(mas[j][i] == 1) {
+				k++;
+			}
+		}
+		if (k > 1) {
 			con = false;
 			break;
 		}
