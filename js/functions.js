@@ -21,6 +21,7 @@ function generateTable() {
 }
 
 function calc() {
+	document.getElementById('res').innerHTML = '<br>';
 	var pairs = document.getElementsByClassName("cell");
 	var mas1 = document.getElementById("mas1").value.replace(/\s+/g, " ").split(" ");
 	var mas2 = document.getElementById("mas2").value.replace(/\s+/g, " ").split(" ");
